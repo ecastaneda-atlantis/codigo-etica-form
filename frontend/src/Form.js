@@ -17,6 +17,9 @@ const Form = () => {
   const [serviceIsOn, setServiceIsOn] = useState(true);
 
   const checkServiceAvailability = async () => {
+    // URL temporal. En el backend debería haber un método que solo devuelva un true.
+    // Si hay una conexión, se procederá a ejecutar la aplicación web.
+    // sino, se mostrará un aviso y con setServiceIsOn se bloquearán los botones del formulario.
     const url = "https://appsmx.com.mx/api/test/temperatura.php/Monterrey";
     axios.get(url, {}).catch(() => {
       Swal.fire({
@@ -43,6 +46,7 @@ const Form = () => {
   const onSubmit = async (e) => {
     setIsLoading(true);
     e.preventDefault();
+    // Pendiente cambiar por URL final.
     const url = "http://192.168.23.247/api/service/correo/etica";
     const { affair, description } = form;
     await axios
