@@ -57,7 +57,7 @@ const Form = () => {
           title: "Reporte enviado correctamente",
           text: "Para Grupo Atlantis la seguridad de nuestros miembros es muy importante. Atenderemos tu caso a la brevedad.",
         });
-        debugger
+        debugger;
         console.table(form);
         setForm({ affair: "", description: "" });
       })
@@ -97,6 +97,9 @@ const Form = () => {
           disabled={!serviceIsOn || isLoading}
           maxLength={300}
         />
+        <FormHelperText>
+          {`Caracteres restantes: ${300 - form.description.length}`}
+        </FormHelperText>
         <FormHelperText>
           La información recopilada por este formulario es completamente
           anónima.
