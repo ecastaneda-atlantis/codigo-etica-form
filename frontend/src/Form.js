@@ -20,8 +20,8 @@ const Form = () => {
     // URL temporal. En el backend debería haber un método que solo devuelva un true.
     // Si hay una conexión, se procederá a ejecutar la aplicación web.
     // sino, se mostrará un aviso y con setServiceIsOn se bloquearán los botones del formulario.
-    const url = "https://appsmx.com.mx/api/test/temperatura.php/Monterrey";
-    axios.get(url, {}).catch(() => {
+    const url = "https://people-rhea.me/api/service/correo/test";
+    axios.post(url, {}).catch(() => {
       Swal.fire({
         icon: "error",
         title: "Error",
@@ -47,18 +47,19 @@ const Form = () => {
     setIsLoading(true);
     e.preventDefault();
     // Pendiente cambiar por URL final.
-    const url = "http://192.168.23.247/api/service/correo/etica";
+    const url = "https://people-rhea.me/api/service/correo/etica";
     const { affair, description } = form;
     await axios
-      .post(url, { affair, description }, { timeout: 2000 })
+      .post(url, { affair, description }, { timeout: 10000 })
       .then(() => {
-        console.table(form);
-        setForm({ affair: "", description: "" });
         Swal.fire({
           icon: "success",
           title: "Reporte enviado correctamente",
-          text: "Para Grupo Atlantis la ... es muy importante. Atenderemos tu caso a la brevedad.",
+          text: "Para Grupo Atlantis la seguridad de nuestros miembros es muy importante. Atenderemos tu caso a la brevedad.",
         });
+        debugger
+        console.table(form);
+        setForm({ affair: "", description: "" });
       })
       .catch(() => {
         Swal.fire({
@@ -78,7 +79,7 @@ const Form = () => {
         <Input
           name="affair"
           type="text"
-          placeholder="Asunto"
+          placeholder="Ejemplo: Incidente baño"
           onChange={onChange}
           value={form.affair}
           required={true}
@@ -89,11 +90,12 @@ const Form = () => {
         </FormLabel>
         <Textarea
           name="description"
-          placeholder="Descripción"
+          placeholder="Máximo 300 caracteres"
           onChange={onChange}
           value={form.description}
           required={true}
           disabled={!serviceIsOn || isLoading}
+          maxLength={300}
         />
         <FormHelperText>
           La información recopilada por este formulario es completamente
@@ -107,6 +109,7 @@ const Form = () => {
               loadingText="Enviando"
               colorScheme="teal"
               spinnerPlacement="start"
+              background="rgb(255,146,0)"
             >
               Submit
             </Button>
@@ -114,10 +117,12 @@ const Form = () => {
         ) : (
           <>
             <Button
+              size={"lg"}
               mt={4}
               colorScheme="teal"
               type="submit"
               disabled={!serviceIsOn}
+              background="rgb(255,146,0)"
             >
               Enviar
             </Button>
