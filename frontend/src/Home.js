@@ -23,6 +23,7 @@ const Home = () => {
         borderRadius={10}
         boxShadow="0 8px 8px 4px rgba(0,0,0,0.2)"
         backgroundColor="#1A202C"
+        mt={["2rem", "2rem", "4rem", "4rem"]}
         //backgroundColor="white"
       >
         <Stack spacing={3} mt={3}>

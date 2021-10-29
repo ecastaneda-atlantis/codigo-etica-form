@@ -11,6 +11,9 @@ import {
 import axios from "axios";
 import Swal from "sweetalert2";
 
+const MAX_DESCRIPTION_LENGTH = 300;
+const MAX_AFFAIR_LENGTH = 20;
+
 const Form = () => {
   const [form, setForm] = useState({ affair: "", description: "" });
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +39,17 @@ const Form = () => {
   }, []);
 
   const onChange = ({ target }) => {
+    console.table(target.name);
     const { name, value } = target;
+
+    if (name === "description" && value.length > MAX_DESCRIPTION_LENGTH) {
+      return;
+    }
+
+    if (name === "affair" && value.length > MAX_AFFAIR_LENGTH) {
+      return;
+    }
+
     setForm({
       ...form,
       [name]: value,
@@ -57,8 +70,6 @@ const Form = () => {
           title: "Reporte enviado correctamente",
           text: "Para Grupo Atlantis la seguridad de nuestros miembros es muy importante. Atenderemos tu caso a la brevedad.",
         });
-        debugger;
-        console.table(form);
         setForm({ affair: "", description: "" });
       })
       .catch(() => {
@@ -85,20 +96,24 @@ const Form = () => {
           required={true}
           disabled={!serviceIsOn || isLoading}
         />
+        <FormHelperText>
+          {`Caracteres restantes: ${MAX_AFFAIR_LENGTH - form.affair.length}`}
+        </FormHelperText>
         <FormLabel fontWeight="bold" mt="2">
           Descripción
         </FormLabel>
         <Textarea
           name="description"
-          placeholder="Máximo 300 caracteres"
+          placeholder={`Máximo ${MAX_DESCRIPTION_LENGTH} caracteres`}
           onChange={onChange}
           value={form.description}
           required={true}
           disabled={!serviceIsOn || isLoading}
-          maxLength={300}
         />
         <FormHelperText>
-          {`Caracteres restantes: ${300 - form.description.length}`}
+          {`Caracteres restantes: ${
+            MAX_DESCRIPTION_LENGTH - form.description.length
+          }`}
         </FormHelperText>
         <FormHelperText>
           La información recopilada por este formulario es completamente
@@ -114,7 +129,7 @@ const Form = () => {
               spinnerPlacement="start"
               background="rgb(255,146,0)"
             >
-              Submit
+              Enviando
             </Button>
           </>
         ) : (
