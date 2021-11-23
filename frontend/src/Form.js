@@ -65,6 +65,7 @@ const Form = () => {
           icon: "success",
           title: "Reporte enviado correctamente",
           text: "Agradecemos tu confianza y daremos el seguimiento a tu reporte manteniendo la confidencialidad de tu identidad.",
+          confirmButtonColor: "#e28029",
         });
         setForm({ affair: "", description: "" });
       })
@@ -137,6 +138,10 @@ const Form = () => {
               type="submit"
               disabled={!serviceIsOn}
               background="rgb(255,146,0)"
+              _hover={{ bg: "#e28029", color: "white" }}
+              _active={{
+                bg: "#e28029",
+              }}
             >
               Enviar
             </Button>
