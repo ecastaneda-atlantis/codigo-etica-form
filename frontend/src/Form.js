@@ -7,7 +7,6 @@ import {
   Textarea,
   Button,
 } from "@chakra-ui/react";
-//import { sleep } from "./utils/sleep";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -20,9 +19,6 @@ const Form = () => {
   const [serviceIsOn, setServiceIsOn] = useState(true);
 
   const checkServiceAvailability = async () => {
-    // URL temporal. En el backend debería haber un método que solo devuelva un true.
-    // Si hay una conexión, se procederá a ejecutar la aplicación web.
-    // sino, se mostrará un aviso y con setServiceIsOn se bloquearán los botones del formulario.
     const url = "https://people-rhea.me/api/service/correo/test";
     axios.post(url, {}).catch(() => {
       Swal.fire({
@@ -68,7 +64,7 @@ const Form = () => {
         Swal.fire({
           icon: "success",
           title: "Reporte enviado correctamente",
-          text: "Para Grupo Atlantis la seguridad de nuestros miembros es muy importante. Atenderemos tu caso a la brevedad.",
+          text: "Agradecemos tu confianza y daremos el seguimiento a tu reporte manteniendo la confidencialidad de tu identidad.",
         });
         setForm({ affair: "", description: "" });
       })
@@ -86,7 +82,7 @@ const Form = () => {
   return (
     <form onSubmit={onSubmit}>
       <FormControl id="email">
-        <FormLabel fontWeight="bold">Asunto</FormLabel>
+        <FormLabel fontWeight="bold">Asunto / Título</FormLabel>
         <Input
           name="affair"
           type="text"

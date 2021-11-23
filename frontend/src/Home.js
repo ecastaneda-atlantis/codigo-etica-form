@@ -31,13 +31,15 @@ const Home = () => {
             ¿Cómo funciona?
           </Text>
           <Text textAlign="left">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut
-            arcu odio. Morbi ut efficitur ante. Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos.
-            Suspendisse fermentum diam elit, in pretium nibh viverra vitae.
-            Maecenas sed feugiat leo. Donec pretium leo ut purus malesuada
-            vestibulum. Integer quis leo et arcu luctus sollicitudin. Nullam
-            tincidunt blandit egestas. Duis dignissim felis ut rutrum ornare.
+            Ahora que ya conoces los lineamientos éticos que marca GEA, hemos
+            creado este espacio para que puedas reportar cualquier incidente que
+            viole lo manifestado en el Código de Ética y Conducta. Cuando
+            elabores tu reporte, es necesario que nos brindes la información
+            necesaria para poder iniciar una investigación y dar un buen
+            seguimiento. La situación que nos reportes, deberá tener el mayor
+            detalle posible, puedes incluir testigos y fechas. Es importante que
+            nos proporciones tu nombre el cual se mantendrá en absoluta
+            confidencialidad, ya que toda denuncia anónima pierde validez.
           </Text>
           <Form />
         </Stack>
