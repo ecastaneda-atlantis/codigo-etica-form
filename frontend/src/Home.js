@@ -1,32 +1,50 @@
 import { Container, Text } from "@chakra-ui/react";
 import React from "react";
-import { Stack, Image, Box, Flex, Grid, Button } from "@chakra-ui/react";
+import {
+  Stack,
+  Image,
+  Grid,
+  Button,
+  Box,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import CODIGO from "./assets/img/CODIGO.png";
 
 import Form from "./Form";
 const Home = () => {
+  const padding = useBreakpointValue({
+    sm: "10rem",
+    md: "10rem",
+    lg: "10rem",
+    xl: "10rem",
+    "2xl": "10rem",
+  });
   return (
-    <>
+    <Box pb={padding}>
       <Text
         textAlign="center"
-        fontSize="6xl"
-        // color="rgb(255,146,0)"
-        color='rgb(50,50,50)'
+        fontSize="6xl"        
+        //color="rgb(50,50,50)"
         fontWeight="bold"
         pt={"2rem"}
+        color={"#e28029"}
       >
         Exprésate
       </Text>
-      <Text textAlign="center" fontSize="2xl" pb={"2rem"} color='rgb(150,150,150)'>
+      <Text
+        textAlign="center"
+        fontSize="2xl"
+        pb={"2rem"}
+        color="rgb(150,150,150)"
+      >
         #anonimo
       </Text>
-      <Container maxW="container.xl" mt={"5rem"} mb={"3rem"}>
+      <Container maxW="container.lg" mt={"5rem"} mb={"3rem"}>
         <Grid
-          borderRadius={10}
           templateColumns={[
             "repeat(1, 1fr)",
             "repeat(1, 1fr)",
-            "repeat(1, 1fr)",
+            "repeat(2, 1fr)",
             "repeat(2, 1fr)",
           ]}
           gap={"2rem"}
@@ -34,14 +52,13 @@ const Home = () => {
         >
           <Stack
             spacing={4}
-            
             p={3}
             w="100%"
             background="#fff"
             boxShadow="0 8px 8px 4px rgba(0,0,0,0.2)"
             borderRadius="1rem"
           >
-            <Text textAlign="center" fontWeight="bold" fontSize="3xl">
+            <Text textAlign="center" fontWeight="bold" fontSize="2xl">
               ¿Cómo funciona?
             </Text>
             <Text textAlign="left">
@@ -59,15 +76,13 @@ const Home = () => {
           </Stack>
           <Stack
             spacing={4}
-            
             p={3}
             w="100%"
             borderRadius="1rem"
             background="#fff"
             boxShadow="0 8px 8px 4px rgba(0,0,0,0.2)"
           >
-
-            <Text textAlign="center" fontSize="3xl">
+            <Text textAlign="center" fontSize="2xl">
               ¿Ya viste nuestro nuevo código de ética?
             </Text>
             <Container>
@@ -75,6 +90,7 @@ const Home = () => {
                 src={CODIGO}
                 maxH="30rem"
                 margin="0 auto"
+                _hover={{ cursor: "pointer" }}
                 onClick={() => window.open("https://people-rhea.me/etica/")}
               />
             </Container>
@@ -96,7 +112,7 @@ const Home = () => {
           </Stack>
         </Grid>
       </Container>
-    </>
+    </Box>
   );
 };
 
