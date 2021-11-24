@@ -20,14 +20,7 @@ const App = () => {
   );
   return (
     <Router>
-      <Box
-        background={
-          "linear-gradient(170deg, rgba(2,0,30,1) 0%, rgba(12,70,82,1) 100%)"
-        }
-        height={'100vh'}
-      >
-        <main>{routes}</main>
-      </Box>
+      <main>{routes}</main>
     </Router>
   );
 };
