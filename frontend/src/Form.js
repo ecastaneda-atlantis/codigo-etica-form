@@ -112,10 +112,7 @@ const Form = () => {
             MAX_DESCRIPTION_LENGTH - form.description.length
           }`}
         </FormHelperText>
-        <FormHelperText>
-          La información recopilada por este formulario es completamente
-          anónima.
-        </FormHelperText>
+
         {isLoading ? (
           <>
             <Button
