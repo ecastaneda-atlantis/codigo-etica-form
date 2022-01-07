@@ -22,7 +22,7 @@ const App = () => {
   });
   const routes = (
     <Switch>
-      <Route exact path="/">
+      <Route basename={"/expresate"} exact path="/expresate">
         <Box>
           <Home />
           <Image
@@ -44,7 +44,7 @@ const App = () => {
         </Box>
       </Route>
 
-      <Redirect to="/" />
+      <Redirect to="/expresate" />
     </Switch>
   );
   return (

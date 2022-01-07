@@ -6,12 +6,25 @@ import {
   Grid,
   Button,
   Box,
+  Link,
   useBreakpointValue,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Flex,
 } from "@chakra-ui/react";
 import CODIGO from "./assets/img/CODIGO.png";
+import flujoEtica from "./assets/img/flujoetica.png";
 
 import Form from "./Form";
 const Home = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const padding = useBreakpointValue({
     sm: "10rem",
     md: "10rem",
@@ -37,14 +50,6 @@ const Home = () => {
         pt={"2rem"}
       >
         Exprésate
-      </Text>
-      <Text
-        textAlign="center"
-        fontSize="2xl"
-        pb={"2rem"}
-        color="rgb(150,150,150)"
-      >
-        #anonimo
       </Text>
       <Container maxW={containerWidth} mt={"5rem"} mb={"3rem"}>
         <Grid
@@ -77,11 +82,72 @@ const Home = () => {
                 brindes la información necesaria para poder iniciar una
                 investigación y dar un buen seguimiento. La situación que nos
                 reportes, deberá tener el mayor detalle posible, puedes incluir
-                testigos y fechas. Es importante que nos proporciones tu nombre
+                testigos y fechas. Es importante que nos proporciones tu nombre,
                 el cual se mantendrá en absoluta confidencialidad, ya que toda
                 denuncia anónima pierde validez.
               </Text>
+              <Text>
+                Conoce el flujo de tu denuncia haciendo click{" "}
+                <Link
+                  color="blue.600"
+                  // href="https://people-rhea.me/flujoetica/flujo.pdf"
+                  onClick={() => window.open(flujoEtica)}
+                >
+                  aquí
+                </Link>
+                .
+              </Text>
               <Form />
+              <Modal
+                onClose={onClose}
+                // size={["xl", "xl", "xl", "xl", "xl"]}
+                size="xl"
+                isOpen={isOpen}
+              >
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Flujo de tu denuncia</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    {/* Para computadora o tablet */}
+                    {/* <Flex
+                      border="1px solid red"
+                      direction="column"
+                      alignContent="center"
+                      justifyContent={"center"}
+                      margin="0 auto"
+                    >
+                      <img src={flujoEtica}></img>
+                    </Flex> */}
+                    {/* 
+                    <Flex
+                      direction="column"
+                      alignContent="center"
+                      justifyContent={"center"}
+                      margin="0 auto"
+                    >
+                      <iframe
+                        height={"auto"}
+                        width={"auto"}
+                        src={"https://people-rhea.me/flujoetica/flujoetica.png"}
+                      ></iframe>
+                    </Flex> */}
+
+                    {/* Para celular */}
+                    {/* <Flex direction="column">
+                      <iframe
+                        width={"100%"}
+                        height={"800px"}
+                        margin={"0 auto"}
+                        src="https://people-rhea.me/flujoetica/flujo.pdf"
+                      ></iframe>
+                    </Flex> */}
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button onClick={onClose}>Cerrar</Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
             </Stack>
           </GridItem>
           <Stack
